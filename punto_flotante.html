@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertir Decimal a Binario (Punto Flotante)</title>
+</head>
+
+<body>
+    <h1>Convertir Número Decimal a Punto Flotante en Binario</h1>
+    <p>Introduce un número decimal:</p>
+    <input type="number" id="decimal">
+    <input type="button" value="Convertir" onclick="convertir_a_binario()">
+
+    <div id="Resultado_binario"></div>
+
+        <script>
+        function convertir_a_binario() {
+            // Obtener el número decimal
+            let decimal = parseFloat(document.getElementById('decimal').value); //convertir el numero en decimal con parseFloat
+
+            // Convertir a formato de punto flotante IEEE 754
+            let Arreglo_float = new Float32Array(1);  // crea 1 numero con formato de 32-bits punto flotante
+            Arreglo_float[0] = decimal;             // almacenamos el decimal como un numero flotante en la posicion 0
+            let intArray = new Uint32Array(Arreglo_float.buffer); //hacemos la conversion para poder manipular la conversion de datos en formato de 
+            //32 bits ya que Float32Array si lo convierte pero en este formato no es posible manipular los bits.
+
+            // Convertir a binario
+            let Resultado_binario = intArray[0].toString(2).padStart(32, '0'); //toString(2) 2 para la base que se convierte y el padStart(32, '0')
+            // 32 para el total de digitos y 0 para acompletar en caso que se requoera
+
+            // Separar en partes: signo, exponente y mantisa
+            let signo = Resultado_binario.charAt(0);
+            let exponente = Resultado_binario.substring(1, 9);
+            let mantisa = Resultado_binario.substring(9);
+
+            // Mostrar resultado
+            document.getElementById('Resultado_binario').innerHTML = `
+            <p>Representación en binario del número ${decimal}:</p>
+            <p>Signo: ${signo}</p>
+            <p>Exponente: ${exponente}</p>
+            <p>Mantisa: ${mantisa}</p>`;
+
+            document.getElementById('Resultado_binario')
+    }
+    
+</script>
+
+</body>
+</html>
