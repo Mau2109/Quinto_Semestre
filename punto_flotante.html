@@ -30,16 +30,16 @@
             // 32 para el total de digitos y 0 para acompletar en caso que se requoera
 
             // Separar en partes: signo, exponente y mantisa
-            let signo = Resultado_binario.charAt(0);
-            let exponente = Resultado_binario.substring(1, 9);
-            let mantisa = Resultado_binario.substring(9);
+            let signo = Resultado_binario.charAt(0);  //obtenemos el primer valor de la cadena con .charAt(0) 0 para la posicion
+            let exponente = Resultado_binario.substring(1, 9); //obtenemos una subacdena de la cadena principal con substring(inicio,fin)
+            let mantisa = Resultado_binario.substring(9); //obtenemos una subcadena de la posicion 9 hasta terminar la cadena principal
 
             // Mostrar resultado
             document.getElementById('Resultado_binario').innerHTML = `
             <p>Representación en binario del número ${decimal}:</p>
             <p>Signo: ${signo}</p>
             <p>Exponente: ${exponente}</p>
-            <p>Mantisa: ${mantisa}</p>`;
+            <p>Mantisa: ${mantisa}</p>`;  // mandamos a imprimir en la pagina con el formato innerHTML
 
             document.getElementById('Resultado_binario')
     }
