@@ -42,13 +42,26 @@
             const lista = texto.trim().split(" ");
             console.log(lista);
 
-            const ul = document.getElementById(palabras);
+            const ul = document.getElementById("palabras");
             lista.forEach(element => {
                 //console.log(element);
                 const li = document.createElement("li");
                 li.textContent=element;
                 ul.appendChild(li);
             });
+        }
+
+        function cifrar_palabra(s,distancia=1){
+            let letras=[];
+            let respuesta = '';
+            for(let i=0; i<s.length ;i++){
+                let temp = (s.charCodeAt(i)-65 + distancia)%26+65;
+                letras.push(temp);
+                //concatenar
+                respuesta = respuesta + String.fromCharCode(temp);
+            }
+            console.log(letras);
+            return respuesta;
         }
     </script>
 
