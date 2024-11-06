@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba JS</title>
+</head>
+<body>
+    <div>
+        <form>
+            <p>
+            Ingrese un numero
+            <input type="text" id="valor">
+            </p>
+
+            <p>
+                Ingrese la base 
+                <select id="base">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="16">16</option>
+                </section>
+            </p>
+
+            <input type="button" value="enviar" onclick="convertir()">
+        </form>
+    </div>
+
+    <div>
+        <form action="">
+            <p>
+                Ingrese un nuero en base 10
+            </p>
+            <input type="number" id="numb10">
+            <!--
+            <input type="number">
+            <input type="email">
+            <input type="date">
+            <input type="submit">
+        -->
+            <input type="button" value="convertir"
+            onclick="convertir_10()">
+
+            <p>
+                Ingrese la base 
+                <select id="baseb">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="16">16</option>
+                </section>
+            </p>
+        </form>
+    </div>
+    <div id="respuesta">
+        
+    </div>
+
+    <script>
+        function convertir(){
+         //   console.log("Kiubo");
+            let valor = document.getElementById("valor").value;
+            let base = parseInt(document.getElementById("base").value);
+         //   console.log(valor);
+
+         let entero = parseInt(valor,base);
+         console.log(entero);
+        }
+
+        function convertir_10(){
+            let valor = document.getElementById("numb10").value;
+            let base = parseInt(document.getElementById("baseb").value);
+            console.log("convertir_10",valor,"",base);
+
+            let respuesta="";
+
+            while(valor>0){
+                let resi = valor%base;
+                respuesta = resi.toString() + respuesta;
+                valor = Math.trunc(valor / base);
+            }
+
+            console.log(valor);
+        }
+    </script>
+    
+</body>
+</html>
