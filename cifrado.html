@@ -14,7 +14,7 @@
             <div class="col col-sm-6 text-center">
                 <form action="" method="get">
                     <label class="w-100" form="texto">Texto a Codificar</label>
-                    <textarea id="texto" placeholder="texto de prueba" class="w-100" rows="20">
+                    <textarea id="texto" placeholder="texto de prueba" oninput="codificar()" class="w-100" rows="20">
                         Ejemplo Prueba
                     </textarea>
 
@@ -27,7 +27,7 @@
                 <ul id="palabras"></ul>
             </div>
             <div class="col col-sm-6">
-                Codificacion
+                <textarea id="txtcifrado" placeholder="texto cifrado" class="w-100" rows="20"></textarea>
             </div>
         </div>
 
@@ -37,17 +37,23 @@
         function codificar(id){
             //let valor = document.getElementById()
             //console.log(id);
-            let texto = document.getElementById("texto").value;
+            let texto = document.getElementById("texto").value.toUpperCase();
+            let txtcifrado = document.getElementById("txtcifrado");
+            txtcifrado.value='';
             console.log(texto);
             const lista = texto.trim().split(" ");
             console.log(lista);
 
             const ul = document.getElementById("palabras");
+            ul.innerHTML='';
             lista.forEach(element => {
                 //console.log(element);
-                const li = document.createElement("li");
-                li.textContent=element;
-                ul.appendChild(li);
+                if(element.length>0){
+                    const li = document.createElement("li");
+                    li.textContent=element + " - " + cifrar_palabra(element);
+                    ul.appendChild(li);
+                    txtcifrado.value = txtcifrado.value + cifrar_palabra(element)+ " ";
+                }
             });
         }
 
