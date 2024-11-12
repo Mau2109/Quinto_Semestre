@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUIGI</title>
+    <style>
+        .pizarron{
+            height: 500px;
+            width: 90%;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="pizarron" id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        //referencia para poder dibujar
+        const contx = canvas.getContext("2d");
+        //referencia crear imagem
+        const img = new Image();
+        img.src = "imagen2.png"
+        img.onload = function(){
+            contx.drawImage(img,
+              0,0, //x,y referencia
+              110, //offset horz
+              145,  //offset vertical
+
+              0,0,
+              50,50
+            );
+        }
+    </script>
+</body>
+</html>
