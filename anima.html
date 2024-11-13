@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación de Sprite</title>
+    <style>
+
+        canvas{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .espacio{
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgb(188, 190,30);
+        }
+        /* Contenedor para el sprite 
+        .sprite {
+            width: 50px;  Ancho de cada frame 
+            height: 50px; /* Alto de cada frame 
+            background-image: url('zelda.png');
+            background-repeat: no-repeat;
+            animation: spriteAnimation 0.7s steps(4) infinite;
+        }
+        /* Animación */
+        /*
+        @keyframes spriteAnimation {
+            from {
+                background-position: 0px;
+            }
+            to {
+                background-position: -200px; 
+            }
+        }
+        /*   sftp://salas@10.10.7.13/home/salas/Documentos/html/animacion  */
+    </style>
+</head>
+<body>
+    <canvas id="pizarron"></canvas>
+    <!--<div class="espacio"></div> -->
+    <script>
+        const canvas = document.getElementById('pizarron');
+        const ctx = canvas.getContext('2d');
+
+        // Cargar la imagen del sprite
+        const spriteImage = new Image();
+        spriteImage.src = 'imagen2_2.png'; // Reemplaza con la ruta de tu imagen
+
+        // Parámetros del sprite
+        const frameWidth = 115;  // Ancho de cada frame
+        const frameHeight = 130; // Alto de cada frame
+        const totalFrames = 4;  // Número total de frames en la imagen
+        let currentFrame = 0;    // Frame actual que se está mostrando
+
+                // Parámetros del movimiento
+        let spriteX = 0;         // Posición inicial del sprite en el canvas
+        const step = 10;         // Cantidad de píxeles que se mueve en cada frame
+        let movingRight = true;  // Dirección inicial del movimiento
+
+        // Animar el sprite
+        function animateSprite() {
+            // Calcular la posición X del frame actual en la imagen de sprite
+            const frameX = currentFrame * frameWidth;
+
+            // Limpiar el canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar el frame actual en la posición actual
+            ctx.drawImage(spriteImage, frameX, 0, frameWidth, frameHeight, spriteX, 0, frameWidth, frameHeight);
+
+            // Pasar al siguiente frame del sprite
+            currentFrame = (currentFrame + 1) % totalFrames;
+
+            // Actualizar la posición del sprite en el canvas
+            if (movingRight) {
+                spriteX += step;
+                // Si llega al borde derecho, cambiar la dirección
+                if (spriteX + frameWidth >= canvas.width) {
+                    movingRight = false;
+                }
+            } else {
+                spriteX -= step;
+                // Si llega al borde izquierdo, cambiar la dirección
+                if (spriteX <= 0) {
+                    movingRight = true;
+                }
+            }
+        }
+
+                // Iniciar la animación cuando la imagen esté cargada
+        spriteImage.onload = function() {
+            setInterval(animateSprite, 250); // Cambiar de frame cada 250ms (0.25s)
+        };
+    </script>
+</body>
+</html>
