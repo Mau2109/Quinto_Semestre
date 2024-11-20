@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laberinto </title>
+    <style>
+        canvas {
+            background-color: lightgray;
+            border: 1px solid #000;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+  <h1 style="text-align: center;">Laberinto Interactivo</h1>
+  <canvas id="laberintoCanvas" width="500" height="500"></canvas>
+
+  <script>
+        // Matriz que representa el laberinto
+        const laberinto = [
+            [0, 1, 0, 0, 0, 0, 0, 0, 0, 2],
+            [0, 1, 1, 0, 0, 2, 2, 2, 0, 0],
+            [0, 0, 0, 0, 3, 0, 0, 2, 2, 0],
+            [0, 1, 1, 1, 3, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 3, 0, 1, 1, 1, 0],
+            [0, 2, 2, 0, 3, 0, 0, 0, 0, 0],
+            [0, 2, 0, 0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+            [0, 3, 0, 0, 0, 0, 0, 0, 2, 0],
+            [0, 0, 0, 3, 3, 3, 3, 0, 0, 0]
+        ];
+
+        // referencia al canvas
+        const canvas = document.getElementById('laberintoCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Tamaño de cada celda en píxeles ancho y alto
+        const cellWidth = 50; 
+        const cellHeight = 50; 
+
+                // Colores para cada tipo de celda
+        const colores = {
+            0: '#ffffff', // Espacios vacíos (blanco)
+            1: '#ff9999', // Obstáculo tipo 1 (rojo claro)
+            2: '#99ccff', // Obstáculo tipo 2 (azul claro)
+            3: '#99ff99', // Obstáculo tipo 3 (verde claro)
+            jugador: '#ffff00' // Posición actual del jugador (amarillo)
+        };
+                // Encontrar una posición inicial válida (cualquier celda con valor 0)
+        function obtener_posicion_inicial() {
+            for (let row = 0; row < laberinto.length; row++) {
+                for (let col = 0; col < laberinto[row].length; col++) {
+                    if (laberinto[row][col] === 0) {
+                        //posición detectada
+                        return { row, col };
+                    }
+                }
+            }
+            // regresa la esquina superior izquierda si no hay alguna posición donde hay un 0
+            return { row: 0, col: 0 }; 
+        }
+        pos_jugador = obtener_posicion_inicial();
+        console.log(pos_jugador);
+     
+        // Dibujar el laberinto
+        function dibujar_laberinto1() {
+            for (let row = 0; row < laberinto.length; row++) {
+                for (let col = 0; col < laberinto[row].length; col++) {
+                    const valor_en_celda = laberinto[row][col];
+                    const x = col * cellWidth;
+                    const y = row * cellHeight;
+
+                    // Dibujar la celda
+                    ctx.fillStyle = colores[valor_en_celda];
+                    ctx.fillRect(x, y, cellWidth, cellHeight);
+
+                                        // Dibujar bordes
+                    ctx.strokeStyle = '#000';
+                    ctx.strokeRect(x, y, cellSize, cellSize);
+
+                }
+            } 
+        }
+
+
+    // Dibujar el laberinto
+        function dibujar_laberinto2() {
+            for (let row = 0; row < laberinto.length; row++) {
+                for (let col = 0; col < laberinto[row].length; col++) {
+                    const valor_en_celda = laberinto[row][col];
+                    const x = col * cellWidth;
+                    const y = row * cellHeight;
+
+                    // Dibujar la celda
+                    ctx.fillStyle = colores[valor_en_celda];
+                    ctx.fillRect(x, y, cellWidth, cellHeight);
+
+                    // Dibujar bordes
+                    ctx.strokeStyle = '#000';
+                    ctx.strokeRect(x, y, cellWidth, cellHeight);
+                }
+            } 
+        }
+        // Dibujar la posición del jugador después de mostrar el laberinto
+        const { row, col } = pos_jugador;
+        const x = col * cellWidth;
+        const y = row * cellHeight;
+        ctx.fillStyle = colores.jugador;
+        ctx.fillRect(x, y, cellWidth, cellHeight);
+
+        // Dibujar el laberinto
+        function dibujar_laberinto3() {
+            for (let row = 0; row < laberinto.length; row++) {
+                for (let col = 0; col < laberinto[row].length; col++) {
+                    const valor_en_celda = laberinto[row][col];
+                    const x = col * cellWidth;
+                    const y = row * cellHeight;
+
+                    // Dibujar la celda
+                    ctx.fillStyle = colores[valor_en_celda];
+                    ctx.fillRect(x, y, cellWidth, cellHeight);
+
+                    // Dibujar bordes
+                    ctx.strokeStyle = '#000';
+                    ctx.strokeRect(x, y, cellWidth, cellHeight);
+                }
+            } 
+        
+            // Dibujar la posición del jugador después de mostrar el laberinto
+            const { row, col } = pos_jugador;
+            console.log(pos_jugador);
+            const x = col * cellWidth;
+            const y = row * cellHeight;
+            ctx.fillStyle = colores.jugador;
+            ctx.fillRect(x, y, cellWidth, cellHeight);
+        }
+
+        // Escuchar eventos de teclado
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowUp') mover_jugador('up');
+            else if (event.key === 'ArrowDown') mover_jugador('down');
+            else if (event.key === 'ArrowLeft') mover_jugador('left');
+            else if (event.key === 'ArrowRight') mover_jugador('right');
+        });
+
+        function mover_jugador(direction) {
+        const { row, col } = pos_jugador;
+        let newRow = row;
+        let newCol = col;
+
+        // Calcular nueva posición
+        if (direction === 'up') newRow--;
+        else if (direction === 'down') newRow++;
+        else if (direction === 'left') newCol--;
+        else if (direction === 'right') newCol++;
+
+        // Validar límites del laberinto y evitar obstáculos
+        if (
+            newRow >= 0 && newRow < laberinto.length &&
+            newCol >= 0 && newCol < laberinto[0].length &&
+            //solo se puede mover a sitios donde es "camino"
+            laberinto[newRow][newCol] === 0
+        ) {
+            pos_jugador = { row: newRow, col: newCol };
+        }
+
+        // Redibujar el laberinto
+        dibujar_laberinto3();
+    }
+    dibujar_laberinto3();
+
+</script>
+
+</body>
+</html>
