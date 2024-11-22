@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-12 col-md-12 text-center w-100 my-5">
+                <h2>Juego de dados</h2>
+            </div>
+            <div class="col col-lg-6 text-center my-3">
+                <button class="btn btn-info w-100"><i class="bi bi-cpu"></i>Computadora</button>
+
+            </div>
+            <div class="col col-lg-6 text-center my-3">
+                <button class="btn btn-info w-100" onclick="tiro_computadora()"><i class="bi bi-person-circle"></i>Jugador</button>
+
+            </div>
+
+            <div class="col col-lg-6 text-center mb-3 w-50">
+                <div class="card border-primary my-3" style="max-width: 18rem;">
+                    <div class="card-header">Resultado Computadora</div>
+                    <div class="card-body text-primary">
+                        <h5 id="resultado_compu">?</h5>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col col-lg-6 text-center mb-3 w-50">
+                <div class="card border-primary my-3" style="max-width: 18rem;">
+                    <div class="card-header">Resultado Jugador</div>
+                    <div class="card-body text-primary">
+                        <h5 id="resultado_jugador">?</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="mensaje"  class="alert alert-secondary">
+                    mensaje
+                </div>
+            </div>
+
+            <div class="row">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Computadora</th>
+                            <th class="text-center">Empate</th>
+                            <th class="text-center">Jugador</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <td id="cuenta_compu" class="fs-1 text-center">0</td>
+                        <td id="cuenta_empate" class="fs-1 text-center">0</td>
+                        <td id="cuenta_jugador" class="fs-1 text-center">0</td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+</body>
+</body>
+
+</html>
