@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./CSS/estilo.css" rel="stylesheet">
+    <style>
+    *{
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .contenedor{
+        background-color: beige;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    nav{
+        padding-bottom: 10px;
+        padding-top: 10px;
+        background-color: #362FD9;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    main{
+        background-color: wheat;
+    }
+
+    footer{
+        background-color: brown;
+    }
+
+    a{
+        background-color: #362FD9;
+        color: #C8FFE0;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-decoration: none;
+        border-radius: 5px;
+        min-width: 80px;
+        text-align: center;
+    }
+
+    a:hover{
+        background-color: #3559E0;
+        transition: 0.5s;
+        transform: scale(0.5s);
+    }
+
+    section{
+        margin: 10px;
+
+    }
+    </style>
+
+</head>
+<body>
+    <div class="contenedor">
+        <nav>
+            <a onclick="show(a)" href="#">Inicio</a>
+            <a onclick="show(b)" href="#">Proyectos</a>
+            <a onclick="show(c)" href="#">Estudios</a>
+            <a onclick="show(d)" href="#">Contacto</a>
+        </nav>
+
+        <main>
+            <section id="a">
+                Inicio
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora amet dicta repellat ratione minima, similique, quae eveniet quas inventore est tempore fuga mollitia in nisi ullam. Sequi voluptatum quas nulla!</p>
+            </section>
+            <section id="b">
+                Proyectos
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro mollitia quos earum dicta aspernatur qui ducimus aperiam voluptates neque dignissimos ea numquam veritatis, ipsam consectetur tempora maxime! Sequi, ducimus ipsa!</p>
+            </section>
+            <section id="c">
+                Estudios
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem tenetur veritatis sint voluptas aliquam odio! Reiciendis, quibusdam ut. Omnis nisi iste rem. Nostrum voluptates facere excepturi assumenda, soluta pariatur perferendis?</p>
+            </section>
+            <section id="d">
+                Contacto
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure exercitationem alias sit delectus culpa eum. Corporis placeat quod possimus dolor dolores vel velit doloremque necessitatibus. Distinctio culpa laboriosam error atque.</p>
+            </section>
+        </main>
+
+        <footer>
+
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit blanditiis maxime recusandae earum nihil eos, voluptates dolores, expedita amet excepturi odio placeat beatae sapiente perferendis laboriosam quaerat odit et ducimus?
+        </footer>
+    </div>
+    <script>
+        function show(id){
+            switch(id){
+                case 'a': console.log('a');
+                    document.getElementById('a').style.display='inline';
+                    document.getElementById('b').style.display='none';
+                    document.getElementById('c').style.display='none';
+                    document.getElementById('d').style.display='none';
+                    break;
+                case 'b': console.log('b');
+                    document.getElementById('a').style.display='none';
+                    document.getElementById('b').style.display='inline';
+                    document.getElementById('c').style.display='none';
+                    document.getElementById('d').style.display='none';
+                    break;
+                
+                case 'c': console.log('c');
+                    document.getElementById('a').style.display='none';
+                    document.getElementById('b').style.display='none';
+                    document.getElementById('c').style.display='inline';
+                    document.getElementById('d').style.display='none';
+                    break;
+                case 'd': console.log('d');
+                    document.getElementById('a').style.display='none';
+                    document.getElementById('b').style.display='none';
+                    document.getElementById('c').style.display='none';
+                    document.getElementById('d').style.display='inline';
+                    break;
+
+            }
+        }
+    </script>
+</body>
+</html>
